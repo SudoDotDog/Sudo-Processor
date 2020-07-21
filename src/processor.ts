@@ -11,6 +11,8 @@ export class DataProcessor<T extends any = any> {
         return new DataProcessor<T>();
     }
 
+    private readonly _processFunctions: any[];
+
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     private constructor() {
 
