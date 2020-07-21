@@ -42,8 +42,8 @@ export class AsyncDataProcessor<T extends any = any> {
 
         return await _Mutate.asyncReduce(
             this._processFunctions,
-            (previous: T, current: AsyncProcessFunction<T>) => {
-                return current(previous);
+            async (previous: T, current: AsyncProcessFunction<T>): Promise<T> => {
+                return Promise.resolve(current(previous));
             },
             data,
         );

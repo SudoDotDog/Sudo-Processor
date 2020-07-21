@@ -42,4 +42,17 @@ describe('Given {AsyncDataProcessor} Class', (): void => {
         expect(processor).to.be.lengthOf(1);
         expect(await processor.process(value)).to.be.equal(result);
     });
+
+    it('should be able to change data - sync', async (): Promise<void> => {
+
+        const value: string = chance.string();
+        const result: string = chance.string();
+
+        const processor: AsyncDataProcessor = AsyncDataProcessor.create();
+
+        processor.add(() => result);
+
+        expect(processor).to.be.lengthOf(1);
+        expect(await processor.process(value)).to.be.equal(result);
+    });
 });

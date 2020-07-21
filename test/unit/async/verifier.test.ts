@@ -45,4 +45,30 @@ describe('Given {AsyncDataVerifier} Class', (): void => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(await verifier.verify(value)).to.be.false;
     });
+
+    it('should be able valid data - happy path - sync', async (): Promise<void> => {
+
+        const value: string = chance.string();
+
+        const verifier: AsyncDataVerifier = AsyncDataVerifier.create();
+
+        verifier.add((original: string) => original === value);
+
+        expect(verifier).to.be.lengthOf(1);
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        expect(await verifier.verify(value)).to.be.true;
+    });
+
+    it('should be able valid data - sad path - sync', async (): Promise<void> => {
+
+        const value: string = chance.string();
+
+        const verifier: AsyncDataVerifier = AsyncDataVerifier.create();
+
+        verifier.add((original: string) => original !== value);
+
+        expect(verifier).to.be.lengthOf(1);
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        expect(await verifier.verify(value)).to.be.false;
+    });
 });

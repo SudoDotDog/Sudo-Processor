@@ -41,7 +41,7 @@ export class AsyncDataVerifier<T extends any = any> {
 
         for (const verifyFunction of this._verifyFunctions) {
 
-            const verifyResult: boolean = await verifyFunction(data);
+            const verifyResult: boolean = await Promise.resolve(verifyFunction(data));
             if (!verifyResult) {
                 return false;
             }
