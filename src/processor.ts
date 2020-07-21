@@ -19,4 +19,14 @@ export class DataProcessor<T extends any = any> {
 
         this._processFunctions = [];
     }
+
+    public process(data: T): T {
+
+        return this._processFunctions.reduce(
+            (previous: T, current: ProcessFunction<T>) => {
+                return current(previous);
+            },
+            data,
+        );
+    }
 }
