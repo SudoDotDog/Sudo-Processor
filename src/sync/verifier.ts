@@ -4,7 +4,7 @@
  * @description Verifier
  */
 
-import { VerifyFunction } from "./declare";
+import { VerifyFunction } from "../declare";
 
 export class DataVerifier<T extends any = any> {
 

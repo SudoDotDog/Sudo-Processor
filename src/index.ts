@@ -5,6 +5,6 @@
  */
 
 export * from "./declare";
-export * from "./processor";
-export * from "./verifier";
+export * from "./sync/processor";
+export * from "./sync/verifier";
 

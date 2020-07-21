@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { DataProcessor } from "../../src";
+import { DataProcessor } from "../../../src";
 
 describe('Given {DataProcessor} Class', (): void => {
 

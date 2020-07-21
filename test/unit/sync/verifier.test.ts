@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { DataVerifier } from "../../src";
+import { DataVerifier } from "../../../src";
 
 describe('Given {DataVerifier} Class', (): void => {
 

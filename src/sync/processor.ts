@@ -4,7 +4,7 @@
  * @description Processor
  */
 
-import { ProcessFunction } from "./declare";
+import { ProcessFunction } from "../declare";
 
 export class DataProcessor<T extends any = any> {
 
