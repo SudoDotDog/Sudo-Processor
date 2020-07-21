@@ -5,3 +5,4 @@
  */
 
 export type ProcessFunction<T> = (original: T) => T;
+export type VerifyFunction<T> = (data: T) => boolean;
