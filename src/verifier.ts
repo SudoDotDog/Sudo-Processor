@@ -20,6 +20,17 @@ export class DataVerifier<T extends any = any> {
         this._verifyFunctions = [];
     }
 
+    public get length(): number {
+
+        return this._verifyFunctions.length;
+    }
+
+    public add(verifier: VerifyFunction<T>): this {
+
+        this._verifyFunctions.push(verifier);
+        return this;
+    }
+
     public verify(data: T): boolean {
 
         for (const verifyFunction of this._verifyFunctions) {

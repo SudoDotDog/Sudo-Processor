@@ -20,6 +20,17 @@ export class DataProcessor<T extends any = any> {
         this._processFunctions = [];
     }
 
+    public get length(): number {
+
+        return this._processFunctions.length;
+    }
+
+    public add(processor: ProcessFunction<T>): this {
+
+        this._processFunctions.push(processor);
+        return this;
+    }
+
     public process(data: T): T {
 
         return this._processFunctions.reduce(
