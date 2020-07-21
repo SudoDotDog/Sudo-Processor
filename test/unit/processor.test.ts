@@ -16,7 +16,7 @@ describe('Given {DataProcessor} Class', (): void => {
 
     it('should be able to construct', (): void => {
 
-        const api: DataProcessor = new DataProcessor();
+        const api: DataProcessor = DataProcessor.create();
 
         expect(api).to.be.instanceOf(DataProcessor);
     });
