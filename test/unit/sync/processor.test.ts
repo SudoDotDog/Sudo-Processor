@@ -11,7 +11,7 @@ import { DataProcessor } from "../../../src";
 
 describe('Given {DataProcessor} Class', (): void => {
 
-    const chance: Chance.Chance = new Chance('processor-processor');
+    const chance: Chance.Chance = new Chance('processor-sync-processor');
 
     it('should be able to construct', (): void => {
 

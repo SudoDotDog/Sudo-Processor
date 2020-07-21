@@ -11,7 +11,7 @@ import { DataVerifier } from "../../../src";
 
 describe('Given {DataVerifier} Class', (): void => {
 
-    const chance: Chance.Chance = new Chance('processor-verifier');
+    const chance: Chance.Chance = new Chance('processor-sync-verifier');
 
     it('should be able to construct', (): void => {
 
