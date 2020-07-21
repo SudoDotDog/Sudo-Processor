@@ -6,3 +6,11 @@
 [![downloads](https://img.shields.io/npm/dm/@sudoo/processor.svg)](https://www.npmjs.com/package/@sudoo/processor)
 
 :tada: Data processor in TypeScript
+
+## Install
+
+```sh
+yarn add @sudoo/processor
+# Or
+npm install @sudoo/processor --save
+```
