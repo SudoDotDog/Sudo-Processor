@@ -13,7 +13,7 @@ export class DataProcessor<T extends any = any> {
         return new DataProcessor<T>();
     }
 
-    private readonly _processFunctions: Array<ProcessFunction<T>>;
+    private _processFunctions: Array<ProcessFunction<T>>;
 
     private constructor() {
 
@@ -28,6 +28,12 @@ export class DataProcessor<T extends any = any> {
     public add(processor: ProcessFunction<T>): this {
 
         this._processFunctions.push(processor);
+        return this;
+    }
+
+    public clear(): this {
+
+        this._processFunctions = [];
         return this;
     }
 

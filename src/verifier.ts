@@ -13,7 +13,7 @@ export class DataVerifier<T extends any = any> {
         return new DataVerifier<T>();
     }
 
-    private readonly _verifyFunctions: Array<VerifyFunction<T>>;
+    private _verifyFunctions: Array<VerifyFunction<T>>;
 
     private constructor() {
 
@@ -28,6 +28,12 @@ export class DataVerifier<T extends any = any> {
     public add(verifier: VerifyFunction<T>): this {
 
         this._verifyFunctions.push(verifier);
+        return this;
+    }
+
+    public clear(): this {
+
+        this._verifyFunctions = [];
         return this;
     }
 
