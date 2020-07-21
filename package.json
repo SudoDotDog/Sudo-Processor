@@ -15,7 +15,9 @@
     "url": "https://github.com/SudoDotDog/Sudoo-Processor/issues"
   },
   "homepage": "https://github.com/SudoDotDog/Sudoo-Processor#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@sudoo/bark": "^2.7.2"
+  },
   "devDependencies": {
     "@sudoo/io": "^1.8.0",
     "@sudoo/triforce": "^2.7.8"

@@ -1,19 +1,19 @@
 /**
  * @author WMXPY
- * @namespace Processor_Sync
+ * @namespace Processor_Async
  * @description Verifier
  */
 
-import { VerifyFunction } from "../declare";
+import { AsyncVerifyFunction } from "../declare";
 
-export class DataVerifier<T extends any = any> {
+export class AsyncDataVerifier<T extends any = any> {
 
-    public static create<T extends any = any>(): DataVerifier<T> {
+    public static create<T extends any = any>(): AsyncDataVerifier<T> {
 
-        return new DataVerifier<T>();
+        return new AsyncDataVerifier<T>();
     }
 
-    private _verifyFunctions: Array<VerifyFunction<T>>;
+    private _verifyFunctions: Array<AsyncVerifyFunction<T>>;
 
     private constructor() {
 
@@ -25,7 +25,7 @@ export class DataVerifier<T extends any = any> {
         return this._verifyFunctions.length;
     }
 
-    public add(verifier: VerifyFunction<T>): this {
+    public add(verifier: AsyncVerifyFunction<T>): this {
 
         this._verifyFunctions.push(verifier);
         return this;
@@ -37,11 +37,12 @@ export class DataVerifier<T extends any = any> {
         return this;
     }
 
-    public verify(data: T): boolean {
+    public async verify(data: T): Promise<boolean> {
 
         for (const verifyFunction of this._verifyFunctions) {
 
-            if (!verifyFunction(data)) {
+            const verifyResult: boolean = await verifyFunction(data);
+            if (!verifyResult) {
                 return false;
             }
         }
