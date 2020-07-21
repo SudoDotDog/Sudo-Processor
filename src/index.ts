@@ -3,3 +3,5 @@
  * @namespace Processor
  * @description Index
  */
+
+export * from "./processor";
