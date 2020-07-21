@@ -6,4 +6,5 @@
 
 export * from "./declare";
 export * from "./processor";
+export * from "./verifier";
 
