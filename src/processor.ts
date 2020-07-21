@@ -4,6 +4,8 @@
  * @description Processor
  */
 
+import { ProcessFunction } from "./declare";
+
 export class DataProcessor<T extends any = any> {
 
     public static create<T extends any = any>(): DataProcessor<T> {
@@ -11,10 +13,10 @@ export class DataProcessor<T extends any = any> {
         return new DataProcessor<T>();
     }
 
-    private readonly _processFunctions: any[];
+    private readonly _processFunctions: Array<ProcessFunction<T>>;
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     private constructor() {
 
+        this._processFunctions = [];
     }
 }
