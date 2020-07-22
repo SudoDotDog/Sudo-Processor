@@ -31,6 +31,12 @@ export class DataVerifier<T extends any = any> {
         return this;
     }
 
+    public insert(verifier: VerifyFunction<T>): this {
+
+        this._verifyFunctions.unshift(verifier);
+        return this;
+    }
+
     public clear(): this {
 
         this._verifyFunctions = [];
