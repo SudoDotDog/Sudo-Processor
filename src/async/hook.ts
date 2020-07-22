@@ -34,4 +34,16 @@ export class AsyncDataHook<T extends any = any> {
 
         return await this._processor.process(data);
     }
+
+    public async verify(data: T): Promise<boolean> {
+
+        return await this._verifier.verify(data);
+    }
+
+    public clear(): this {
+
+        this._processor.clear();
+        this._verifier.clear();
+        return this;
+    }
 }

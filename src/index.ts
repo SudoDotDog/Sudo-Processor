@@ -4,6 +4,7 @@
  * @description Index
  */
 
+export * from "./async/hook";
 export * from "./async/processor";
 export * from "./async/verifier";
 export * from "./declare";
