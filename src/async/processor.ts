@@ -32,6 +32,12 @@ export class AsyncDataProcessor<T extends any = any> {
         return this;
     }
 
+    public insert(processor: AsyncProcessFunction<T>): this {
+
+        this._processFunctions.unshift(processor);
+        return this;
+    }
+
     public clear(): this {
 
         this._processFunctions = [];

@@ -31,6 +31,12 @@ export class AsyncDataVerifier<T extends any = any> {
         return this;
     }
 
+    public insert(verifier: AsyncVerifyFunction<T>): this {
+
+        this._verifyFunctions.unshift(verifier);
+        return this;
+    }
+
     public clear(): this {
 
         this._verifyFunctions = [];
