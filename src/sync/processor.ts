@@ -52,4 +52,11 @@ export class DataProcessor<T extends any = any> {
             data,
         );
     }
+
+    public clone(): DataProcessor<T> {
+
+        const processor: DataProcessor<T> = new DataProcessor<T>();
+
+        return processor;
+    }
 }
