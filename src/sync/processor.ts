@@ -37,6 +37,14 @@ export class DataProcessor<T extends any = any> {
         return this;
     }
 
+    public addList(processors: Array<ProcessFunction<T>>): this {
+
+        for (const processor of processors) {
+            this.add(processor);
+        }
+        return this;
+    }
+
     public clear(): this {
 
         this._processFunctions = [];
@@ -56,6 +64,7 @@ export class DataProcessor<T extends any = any> {
     public clone(): DataProcessor<T> {
 
         const processor: DataProcessor<T> = new DataProcessor<T>();
+        processor.addList(this._processFunctions);
 
         return processor;
     }
