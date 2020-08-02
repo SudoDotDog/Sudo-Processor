@@ -37,6 +37,14 @@ export class DataVerifier<T extends any = any> {
         return this;
     }
 
+    public addList(verifiers: Array<VerifyFunction<T>>): this {
+
+        for (const verifier of verifiers) {
+            this.add(verifier);
+        }
+        return this;
+    }
+
     public clear(): this {
 
         this._verifyFunctions = [];
@@ -52,5 +60,13 @@ export class DataVerifier<T extends any = any> {
             }
         }
         return true;
+    }
+
+    public clone(): DataVerifier<T> {
+
+        const verifier: DataVerifier<T> = new DataVerifier<T>();
+        verifier.addList(this._verifyFunctions);
+
+        return verifier;
     }
 }
