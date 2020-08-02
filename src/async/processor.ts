@@ -38,6 +38,14 @@ export class AsyncDataProcessor<T extends any = any> {
         return this;
     }
 
+    public addList(processors: Array<AsyncProcessFunction<T>>): this {
+
+        for (const processor of processors) {
+            this.add(processor);
+        }
+        return this;
+    }
+
     public clear(): this {
 
         this._processFunctions = [];
@@ -53,5 +61,13 @@ export class AsyncDataProcessor<T extends any = any> {
             },
             data,
         );
+    }
+
+    public clone(): AsyncDataProcessor<T> {
+
+        const processor: AsyncDataProcessor<T> = new AsyncDataProcessor<T>();
+        processor.addList(this._processFunctions);
+
+        return processor;
     }
 }
