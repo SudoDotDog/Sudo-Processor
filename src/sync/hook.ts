@@ -17,10 +17,13 @@ export class DataHook<T extends any = any> {
     private readonly _processor: DataProcessor<T>;
     private readonly _verifier: DataVerifier<T>;
 
-    private constructor() {
+    private constructor(
+        processor: DataProcessor<T> = DataProcessor.create<T>(),
+        verifier: DataVerifier<T> = DataVerifier.create<T>(),
+    ) {
 
-        this._processor = DataProcessor.create<T>();
-        this._verifier = DataVerifier.create<T>();
+        this._processor = processor;
+        this._verifier = verifier;
     }
 
     public get processor(): DataProcessor<T> {
@@ -45,5 +48,14 @@ export class DataHook<T extends any = any> {
         this._processor.clear();
         this._verifier.clear();
         return this;
+    }
+
+    public clone(): DataHook<T> {
+
+        const hook: DataHook<T> = new DataHook<T>(
+            this._processor.clone(),
+            this._verifier.clone(),
+        );
+        return hook;
     }
 }

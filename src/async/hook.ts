@@ -17,10 +17,13 @@ export class AsyncDataHook<T extends any = any> {
     private readonly _processor: AsyncDataProcessor<T>;
     private readonly _verifier: AsyncDataVerifier<T>;
 
-    private constructor() {
+    private constructor(
+        processor: AsyncDataProcessor<T> = AsyncDataProcessor.create<T>(),
+        verifier: AsyncDataVerifier<T> = AsyncDataVerifier.create<T>(),
+    ) {
 
-        this._processor = AsyncDataProcessor.create<T>();
-        this._verifier = AsyncDataVerifier.create<T>();
+        this._processor = processor;
+        this._verifier = verifier;
     }
 
     public get processor(): AsyncDataProcessor<T> {
@@ -45,5 +48,14 @@ export class AsyncDataHook<T extends any = any> {
         this._processor.clear();
         this._verifier.clear();
         return this;
+    }
+
+    public clone(): AsyncDataHook<T> {
+
+        const hook: AsyncDataHook<T> = new AsyncDataHook<T>(
+            this._processor.clone(),
+            this._verifier.clone(),
+        );
+        return hook;
     }
 }
