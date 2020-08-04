@@ -4,8 +4,8 @@
  * @description Processor
  */
 
-import { _Mutate } from "@sudoo/bark/mutate";
 import { AsyncProcessFunction } from "../declare";
+import { asyncReduce } from "../util";
 
 export class AsyncDataProcessor<T extends any = any> {
 
@@ -54,7 +54,7 @@ export class AsyncDataProcessor<T extends any = any> {
 
     public async process(data: T): Promise<T> {
 
-        return await _Mutate.asyncReduce(
+        return await asyncReduce(
             this._processFunctions,
             async (previous: T, current: AsyncProcessFunction<T>): Promise<T> => {
                 return Promise.resolve(current(previous));
