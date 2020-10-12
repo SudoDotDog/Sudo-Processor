@@ -29,7 +29,6 @@ describe('Given {AsyncDataVerifier} Class', (): void => {
         verifier.add(async (original: string) => Promise.resolve(original === value));
 
         expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(await verifier.verify(value)).to.be.true;
     });
 
@@ -42,7 +41,6 @@ describe('Given {AsyncDataVerifier} Class', (): void => {
         verifier.add(async (original: string) => Promise.resolve(original !== value));
 
         expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(await verifier.verify(value)).to.be.false;
     });
 
@@ -55,7 +53,6 @@ describe('Given {AsyncDataVerifier} Class', (): void => {
         verifier.add((original: string) => original === value);
 
         expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(await verifier.verify(value)).to.be.true;
     });
 
@@ -68,7 +65,6 @@ describe('Given {AsyncDataVerifier} Class', (): void => {
         verifier.add((original: string) => original !== value);
 
         expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(await verifier.verify(value)).to.be.false;
     });
 });

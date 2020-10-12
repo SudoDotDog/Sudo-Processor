@@ -7,42 +7,30 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { DataVerifier } from "../../../src";
+import { SideEffect } from "../../../src";
 
-describe('Given {DataVerifier} Class', (): void => {
+describe('Given {SideEffect} Class', (): void => {
 
-    const chance: Chance.Chance = new Chance('processor-sync-verifier');
+    const chance: Chance.Chance = new Chance('processor-sync-side-effect');
 
     it('should be able to construct', (): void => {
 
-        const verifier: DataVerifier = DataVerifier.create();
+        const verifier: SideEffect = SideEffect.create();
 
-        expect(verifier).to.be.instanceOf(DataVerifier);
+        expect(verifier).to.be.instanceOf(SideEffect);
     });
 
-    it('should be able valid data - happy path', (): void => {
+    it('should be able execute side effect data - happy path', (): void => {
 
-        const value: string = chance.string();
+        let result: boolean = false;
 
-        const verifier: DataVerifier = DataVerifier.create();
+        const executer: SideEffect = SideEffect.create();
 
-        verifier.add((original: string) => original === value);
+        executer.add(() => result = true);
 
-        expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        expect(verifier.verify(value)).to.be.true;
-    });
+        expect(executer).to.be.lengthOf(1);
+        executer.execute(chance.string());
 
-    it('should be able valid data - sad path', (): void => {
-
-        const value: string = chance.string();
-
-        const verifier: DataVerifier = DataVerifier.create();
-
-        verifier.add((original: string) => original !== value);
-
-        expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        expect(verifier.verify(value)).to.be.false;
+        expect(result).to.be.true;
     });
 });

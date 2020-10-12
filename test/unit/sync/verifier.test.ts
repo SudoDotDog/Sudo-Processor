@@ -29,7 +29,6 @@ describe('Given {DataVerifier} Class', (): void => {
         verifier.add((original: string) => original === value);
 
         expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(verifier.verify(value)).to.be.true;
     });
 
@@ -42,7 +41,6 @@ describe('Given {DataVerifier} Class', (): void => {
         verifier.add((original: string) => original !== value);
 
         expect(verifier).to.be.lengthOf(1);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(verifier.verify(value)).to.be.false;
     });
 });
