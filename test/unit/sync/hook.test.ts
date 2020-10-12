@@ -19,5 +19,5 @@ describe('Given {DataHook} Class', (): void => {
         const processor: DataHook = DataHook.create();
 
         expect(processor).to.be.instanceOf(DataHook);
-    })
+    });
 });
