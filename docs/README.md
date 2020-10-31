@@ -28,3 +28,7 @@ processor.sideEffect.add(() => sendEmail());
 processor.processor.add((data) => newData);
 processor.verifier.add((data) => true);
 ```
+
+-   By `processor.execute(data)`, you can execute all side effects.
+-   By `newData = processor.process(data)`, you can process data pipelined.
+-   By `result = processor.verify(data)`, you can verify data if is valid.
