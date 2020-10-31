@@ -14,3 +14,17 @@ yarn add @sudoo/processor
 # Or
 npm install @sudoo/processor --save
 ```
+
+## Usage
+
+Process can be load by `SideEffect`, `Processor` and `Verifier` functions.
+
+```ts
+import { AsyncDataHook } from "@sudoo/processor";
+
+const processor: AsyncDataHook = AsyncDataHook.create();
+
+processor.sideEffect.add(() => sendEmail());
+processor.processor.add((data) => newData);
+processor.verifier.add((data) => true);
+```
